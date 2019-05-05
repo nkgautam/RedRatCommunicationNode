@@ -1,6 +1,7 @@
 #include "Block.h"
+#include<iostream>
 
-Block::Block(int index, string timestamp, string data, string previousHash = " ")
+Block::Block(int index, string timestamp, string data, string previousHash )
 {
     //ctor
     this->m_index = index;
@@ -18,6 +19,13 @@ Block::~Block()
 
 string Block::calculateHash()
 {
-    string retHash = " ";
+    string retHash = "0000aadnv";
     return retHash;
+}
+
+void Block::ShowBlock(){
+ cout<< this->m_index << "\n ";
+ cout<< this->m_timestamp << "\n ";
+ cout<< this->m_data << "\n ";
+ cout<< this->m_hash << "\n ";
 }

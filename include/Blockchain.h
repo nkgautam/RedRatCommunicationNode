@@ -1,7 +1,6 @@
 #ifndef BLOCKCHAIN_H
 #define BLOCKCHAIN_H
-#include <list>
-#include <iterator>
+#include <vector>
 #include "Block.h"
 using namespace std;
 
@@ -10,10 +9,14 @@ class Blockchain
     public:
         Blockchain();
         virtual ~Blockchain();
+        void ShowBlockchain();
+        void AddBlock(Block newBlock);
     protected:
     private:
-    list <Block> m_chain;
+    vector <Block> m_chain;
     Block CreateGenesisBlock();
+    Block GetLatestBlock();
+
 };
 
 #endif // BLOCKCHAIN_H
