@@ -5,12 +5,12 @@ using namespace std;
 
 int main()
 {
-    cout << "RedRat Communication Node APP" << endl;
+    cout << "RedRat Communication Node APP\n" << endl;
 
-    Blockchain  blockchain;
-    blockchain.AddBlock(Block(1,"01/05/2019", "data1"));
-    blockchain.AddBlock(Block(2,"02/05/2019", "data2"));
+    BlockChain  blockChain;
+    blockChain.addBlock(Block(1,"01/05/2019", "data1"));
+    blockChain.addBlock(Block(2,"02/05/2019", "data2"));
 
-    blockchain.ShowBlockchain();
+    blockChain.showBlockChain();
     return 0;
 }

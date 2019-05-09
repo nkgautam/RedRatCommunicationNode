@@ -23,7 +23,7 @@ string Block::calculateHash()
     return retHash;
 }
 
-void Block::ShowBlock(){
+void Block::showBlock(){
  cout<< this->m_index << "\n ";
  cout<< this->m_timestamp << "\n ";
  cout<< this->m_data << "\n ";

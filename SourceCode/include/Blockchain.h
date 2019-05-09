@@ -4,18 +4,18 @@
 #include "Block.h"
 using namespace std;
 
-class Blockchain
+class BlockChain
 {
     public:
-        Blockchain();
-        virtual ~Blockchain();
-        void ShowBlockchain();
-        void AddBlock(Block newBlock);
+        BlockChain();
+        virtual ~BlockChain();
+        void showBlockChain();
+        void addBlock(Block block);
     protected:
     private:
     vector <Block> m_chain;
-    Block CreateGenesisBlock();
-    Block GetLatestBlock();
+    Block createGenesisBlock();
+    Block getLatestBlock();
 
 };
 
