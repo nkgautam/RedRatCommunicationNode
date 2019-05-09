@@ -1,0 +1,33 @@
+RedRat Inc
+C++ Coding Guidelines.
+1.	Naming Convention
+
+•	Types: Names representing types must be in mixed case starting with upper case.
+Example: Block, BlockChain
+
+•	Variables: Variable names must be in mixed case starting with lower case.
+Example: block, blockChain
+
+•	Constants: Named constant must be in all upper case using underscore to separate the words. .
+Example: MAX_ITERATION, COLOR_RED, PI
+
+•	Template: Names representing template types must be in single upper case letter.
+Example: template<class T> 
+
+•	Methods/Functions: Names represent method/function must be mixed in case and start with lower case.
+Example: getAddress(), computeGrandTotal()
+
+•	Class Variables: Private class variables should have m_ underscore prefix.
+Example:  private: m_block;
+
+•	Generic Variables: variables should have the same name as their type.
+Example:  void setBlock(Block* block)
+
+•	Plural form should be used on names representing a collection of objects.
+Example:  int   values[];
+
+•	The prefix is should be used for boolean variables and methods.
+Example: isVisible;
+
+•	The prefix n should be used for variables representing a number of objects.
+Example:  nLines
