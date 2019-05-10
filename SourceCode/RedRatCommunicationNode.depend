@@ -24,22 +24,34 @@
 	"Blockchain.h"
 	<iostream>
 
-1557429303 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
+1557491074 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
 	<iostream>
 	"Blockchain.h"
 
-1557428975 /home/pi/RedRatCommunicationNode/SourceCode/include/Blockchain.h
+1557436510 /home/pi/RedRatCommunicationNode/SourceCode/include/Blockchain.h
 	<vector>
 	"Block.h"
 
-1557429126 /home/pi/RedRatCommunicationNode/SourceCode/include/Block.h
+1557493374 /home/pi/RedRatCommunicationNode/SourceCode/include/Block.h
 	<string>
 
-1557429149 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Block.cpp
+1557493938 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Block.cpp
 	"Block.h"
 	<iostream>
+	<iostream>
+	<iomanip>
+	<sstream>
+	"sha256.h"
 
-1557429327 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Blockchain.cpp
+1557437623 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Blockchain.cpp
 	"Blockchain.h"
 	<iostream>
+
+1557493781 /home/pi/RedRatCommunicationNode/SourceCode/include/sha256.h
+	<string>
+
+1557493836 source:/home/pi/RedRatCommunicationNode/SourceCode/src/sha256.cpp
+	<cstring>
+	<fstream>
+	"sha256.h"
 

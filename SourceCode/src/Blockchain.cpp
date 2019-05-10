@@ -1,6 +1,8 @@
 #include "Blockchain.h"
 #include <iostream>
 
+using namespace std;
+
 BlockChain::BlockChain()
 {
     //ctor
@@ -32,7 +34,7 @@ void BlockChain::addBlock(Block block)
 
 void BlockChain::showBlockChain()
 {
-cout << "\nBlockchain elements are: ";
+cout << "\nBlockchain elements are: \n";
 
     for (int i = 0; i < this->m_chain.size(); i++)
     {

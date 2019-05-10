@@ -1,6 +1,9 @@
 #ifndef BLOCK_H
 #define BLOCK_H
-#include<string>
+
+
+#include <string>
+
 using namespace std;
 
 class Block
@@ -17,6 +20,7 @@ class Block
         int m_index;
         string m_timestamp;
         string m_data;
+        //string sha256(const string str);
 
 };
 
