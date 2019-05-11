@@ -37,9 +37,11 @@
 		</Compiler>
 		<Unit filename="include/Block.h" />
 		<Unit filename="include/Blockchain.h" />
+		<Unit filename="include/sha256.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Block.cpp" />
 		<Unit filename="src/Blockchain.cpp" />
+		<Unit filename="src/sha256.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
