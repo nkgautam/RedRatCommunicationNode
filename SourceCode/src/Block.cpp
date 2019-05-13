@@ -4,7 +4,12 @@
 #include <iomanip>
 #include <sstream>
 #include "sha256.h"
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
+
 using namespace std;
+using namespace rapidjson;
 
 Block::Block(int index, string timestamp, string data, string previousHash )
 {
@@ -34,9 +39,21 @@ Block::calculateHash()
 
 void
 Block::showBlock(){
- cout<< this->m_index << "\n ";
- cout<< this->m_timestamp << "\n ";
- cout<< this->m_data << "\n ";
- cout<< this->m_previousHash << "\n ";
- cout<< this->m_hash << "\n ";
+    string jsonStr = "{\"TimeStamp\":\""+this->m_timestamp+
+    "\",\"Data\":\""+this->m_data+
+    "\",\"PreviousHash\":\""+this->m_previousHash+
+    "\",\"Hash\":\""+this->m_hash+
+    "\"}";
+
+     const char* json =jsonStr.c_str();
+     Document dom;
+     dom.Parse(json);
+
+     StringBuffer buffer;
+     Writer<StringBuffer> writer(buffer);
+     dom.Accept(writer);
+
+
+     std::cout << buffer.GetString() << std::endl;
+
 }

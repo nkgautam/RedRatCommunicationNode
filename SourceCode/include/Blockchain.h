@@ -13,9 +13,9 @@ class BlockChain
         void addBlock(Block block);
     protected:
     private:
-    vector <Block> m_chain;
-    Block createGenesisBlock();
-    Block getLatestBlock();
+        vector <Block> m_chain;
+        Block createGenesisBlock();
+        Block getLatestBlock();
 
 };
 
