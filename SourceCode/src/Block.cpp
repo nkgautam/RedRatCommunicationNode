@@ -53,7 +53,6 @@ Block::showBlock(){
      Writer<StringBuffer> writer(buffer);
      dom.Accept(writer);
 
-
      std::cout << buffer.GetString() << std::endl;
 
 }
