@@ -36,7 +36,7 @@ RSocket::RSocket( SocketType type, NetworkLayerProtocol protocol ) throw(RSocket
     m_sockDesc = socket(protocol, type, 0);
     if (m_sockDesc < 0)
     {
-        throw CSocketException("Socket creation failed (socket())", true);
+        throw RSocketException("Socket creation failed (socket())", true);
     }
 }
 
@@ -117,8 +117,7 @@ void RSocket::FillAddr( const string & localAddress, unsigned short localPort, s
     }
     localAddr.sin_addr.s_addr = *((unsigned long *) host->h_addr_list[0]);
 
-    localAddr.sin_port = htons(localPort);     // Assign port in network byte order
-    ////cout<<"\n returning from  Fille addr";
+    localAddr.sin_port = htons(localPort);
 }
 
 unsigned long int RSocket::GetReadBufferSize()
@@ -126,7 +125,7 @@ unsigned long int RSocket::GetReadBufferSize()
     unsigned long int nSize;
     socklen_t n = sizeof(nSize);
     getsockopt(m_sockDesc,SOL_SOCKET,SO_RCVBUF,(void *)&nSize, (&n));
-    // now the variable nSize will have the socket size
+
     return nSize;
 }
 
@@ -159,18 +158,16 @@ void RSocket::SetNonBlocking( bool bBlocking ) throw(RSocketException)
 
 void RSocket::ConnectToHost( const string &foreignAddress, unsigned short foreignPort ) throw(RSocketException)
 {
-    //cout<<"\nstart Connect to host";
-    // Get the address of the requested host
+
     sockaddr_in destAddr;
-    //cout<<"\ninside Connect to host";
+
     FillAddr(foreignAddress, foreignPort, destAddr);
 
-    //cout<<"trying to connect to host";
-    // Try to connect to the given port
+
     if (::connect(m_sockDesc, (sockaddr *) &destAddr, sizeof(destAddr)) < 0) {
         throw RSocketException("Connect failed (connect())", true);
     }
-    //cout<<"\n after connecting";
+
 
 }
 
@@ -209,7 +206,7 @@ unsigned short RSocket::GetPeerPort() throw(RSocketException)
     unsigned int addr_len = sizeof(addr);
 
     if (getpeername(m_sockDesc, (sockaddr *) &addr, (socklen_t *) &addr_len) < 0) {
-        throw CSocketException("Fetch of foreign port failed (getpeername())", true);
+        throw RSocketException("Fetch of foreign port failed (getpeername())", true);
     }
     return ntohs(addr.sin_port);
 }
@@ -231,26 +228,26 @@ RSocket& RSocket::operator>>( string& sStr )
 
 int RSocket::OnDataRead(unsigned long timeToWait)
 {
-    /* master file descriptor list */
+
     fd_set master;
     struct timeval      *ptimeout = NULL;
 
-    /* temp file descriptor list for select() */
+
     fd_set read_fds;
 
-    /* maximum file descriptor number */
+
     int fdmax;
 
-    /* clear the master and temp sets */
+
     FD_ZERO(&master);
     FD_ZERO(&read_fds);
 
-    /* add the listener to the master set */
-    FD_SET(m_sockDesc, &master);
-    /* keep track of the biggest file descriptor */
-    fdmax = m_sockDesc; /* so far, it's this one*/
 
-    /* copy it */
+    FD_SET(m_sockDesc, &master);
+
+    fdmax = m_sockDesc;
+
+
     read_fds = master;
     //cout<<"Waiting for select";
     int nRet;
@@ -281,15 +278,15 @@ int RSocket::OnDataRead(unsigned long timeToWait)
 
 void RSocket::SetBindToDevice( const string& sInterface ) throw(RSocketException)
 {
-    struct ifreq ifr;
-    memset(&ifr, 0, sizeof(ifr));
-    snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), sInterface.c_str());
+    //struct ifreq ifr;
+    //memset(&ifr, 0, sizeof(ifr));
+    //snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), sInterface.c_str());
     //Todo:SO_BINDTODEVICE not declared error comes in CygWin, need to compile in Linux.
     /*int nRet = ::setsockopt(m_sockDesc, SOL_SOCKET, SO_BINDTODEVICE, (void*)&ifr, sizeof(ifr));
 
     if (nRet < 0)
     {
-        throw CSocketException("Error in binding to device ", true);
+        throw RSocketException("Error in binding to device ", true);
     }*/
 }
 
@@ -330,11 +327,10 @@ void UDPSocket::DisconnectFromHost() throw(RSocketException)
 void UDPSocket::SendDataGram( const void *buffer, int bufferLen, const string &foreignAddress,
     unsigned short foreignPort )  throw(RSocketException)
 {
-    //cout<<"Befor Fill addr";
+
     sockaddr_in destAddr;
     FillAddr(foreignAddress, foreignPort, destAddr);
-    //cout<<"Befor socket send";
-    // Write out the whole buffer as a single message.
+
     if (sendto(m_sockDesc, (void *) buffer, bufferLen, 0,(sockaddr *) &destAddr, sizeof(destAddr)) != bufferLen)
     {
         throw RSocketException("Send failed (sendto())", true);
@@ -343,7 +339,7 @@ void UDPSocket::SendDataGram( const void *buffer, int bufferLen, const string &f
 }
 
 int UDPSocket::RecvDataGram( void *buffer, int bufferLen, string &sourceAddress, unsigned short &sourcePort )
-    throw(CSocketException)
+    throw(RSocketException)
 {
     sockaddr_in clntAddr;
     socklen_t addrLen = sizeof(clntAddr);
@@ -400,8 +396,7 @@ void UDPSocket::LeaveGroup( const string &multicastGroup ) throw(RSocketExceptio
 
 void UDPSocket::SetBroadcast()
 {
-    // If this fails, we'll hear about it when we try to send.  This will allow
-    // system that cannot broadcast to continue if they don't plan to broadcast
+
     int broadcastPermission = 1;
     setsockopt(m_sockDesc, SOL_SOCKET, SO_BROADCAST,
         (void *) &broadcastPermission, sizeof(broadcastPermission));
