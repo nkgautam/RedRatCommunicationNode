@@ -24,8 +24,10 @@
 	"Blockchain.h"
 	<iostream>
 
-1557491074 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
+1558264508 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
 	<iostream>
+	<cstdlib>
+	<pthread.h>
 	"Blockchain.h"
 
 1557638610 /home/pi/RedRatCommunicationNode/SourceCode/include/Blockchain.h
@@ -200,4 +202,30 @@
 
 1558097820 /home/pi/RedRatCommunicationNode/SourceCode/include/Mutex.h
 	<pthread.h>
+
+1558212095 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Socket.cpp
+	"Socket.h"
+	"Socket.h"
+	<errno.h>
+	<cstring>
+	<fcntl.h>
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<pthread.h>
+	<unistd.h>
+	"Mutex.h"
+
+1558096937 /home/pi/RedRatCommunicationNode/SourceCode/include/Socket.h
+	<cstring>
+	<exception>
+	<string>
+	<sys/types.h>
+	<sys/socket.h>
+	<netdb.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<netinet/in.h>
+	<errno.h>
+	<climits>
 
