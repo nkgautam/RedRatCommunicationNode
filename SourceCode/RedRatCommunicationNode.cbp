@@ -34,6 +34,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Linker>
+			<Add option="-pthread" />
+		</Linker>
 		<Unit filename="include/Block.h" />
 		<Unit filename="include/Blockchain.h" />
 		<Unit filename="include/Mutex.h" />
