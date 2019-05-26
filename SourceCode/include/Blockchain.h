@@ -16,7 +16,6 @@ class BlockChain
         vector <Block> m_chain;
         Block createGenesisBlock();
         Block getLatestBlock();
-
 };
 
 #endif // BLOCKCHAIN_H

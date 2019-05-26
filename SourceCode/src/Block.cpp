@@ -37,7 +37,7 @@ Block::calculateHash()
 
 }
 
-void
+string
 Block::showBlock(){
     string jsonStr = "{\"TimeStamp\":\""+this->m_timestamp+
     "\",\"Data\":\""+this->m_data+
@@ -53,6 +53,7 @@ Block::showBlock(){
      Writer<StringBuffer> writer(buffer);
      dom.Accept(writer);
 
-     std::cout << buffer.GetString() << std::endl;
+     //std::cout << buffer.GetString() << std::endl;
+     return buffer.GetString();
 
 }

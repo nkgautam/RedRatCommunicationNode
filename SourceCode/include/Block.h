@@ -14,7 +14,7 @@ class Block
         Block(int index, string timestamp, string data, string previousHash = " ");
         virtual ~Block();
         string calculateHash();
-        void showBlock();
+        string showBlock();
     protected:
     private:
         int m_index;
