@@ -27,7 +27,10 @@ protected:
     uint32 m_h[8];
 };
 
-std::string sha256(std::string input);
+void sha256(const void *input, int length, unsigned char digest[]) ;  // minimum sizeof(digest) is (SHA256:DIGEST_SIZE)
+const char *sha256(const void *input, int length, char *output) ;  // minimum sizeof(output) is (SHA256:DIGEST_SIZE * 2) + 1
+								   // returns hash as string
+std::string sha256(std::string input);				   // returns hash as string
 
 #define SHA2_SHFR(x, n)    (x >> n)
 #define SHA2_ROTR(x, n)   ((x >> n) | (x << ((sizeof(x) << 3) - n)))
