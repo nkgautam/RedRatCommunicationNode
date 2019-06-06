@@ -41,8 +41,10 @@ DEP_RELEASE =
 OUT_RELEASE = bin/Release/RedRatCommunicationNode
 
 OBJ_DEBUG = $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/src/Block.o $(OBJDIR_DEBUG)/src/Blockchain.o $(OBJDIR_DEBUG)/src/Mutex.o $(OBJDIR_DEBUG)/src/Socket.o $(OBJDIR_DEBUG)/src/sha256.o
+BCDS_DEBUG = $(OBJDIR_DEBUG)/bcds.o $(OBJDIR_DEBUG)/src/BlockChainDataStore.o $(OBJDIR_DEBUG)/src/sha256.o
 
 OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/src/Block.o $(OBJDIR_RELEASE)/src/Blockchain.o $(OBJDIR_RELEASE)/src/Mutex.o $(OBJDIR_RELEASE)/src/Socket.o $(OBJDIR_RELEASE)/src/sha256.o
+BCDS_RELEASE = $(OBJDIR_RELEASE)/bcds.o $(OBJDIR_RELEASE)/src/BlockChainDataStore.o $(OBJDIR_RELEASE)/src/sha256.o
 
 all: debug release
 
@@ -57,8 +59,12 @@ after_debug:
 
 debug: before_debug out_debug after_debug
 
-out_debug: before_debug $(OBJ_DEBUG) $(DEP_DEBUG)
+out_debug: before_debug $(OBJ_DEBUG) $(BCDS_DEBUG) $(DEP_DEBUG)
 	$(LD) $(LIBDIR_DEBUG) -o $(OUT_DEBUG) $(OBJ_DEBUG)  $(LDFLAGS_DEBUG) $(LIB_DEBUG)
+	$(LD) $(LIBDIR_DEBUG) -o bin/Debug/bcds $(BCDS_DEBUG)  $(LDFLAGS_DEBUG) $(LIB_DEBUG)
+
+$(OBJDIR_DEBUG)/bcds.o: bcds.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c bcds.cpp -o $(OBJDIR_DEBUG)/bcds.o
 
 $(OBJDIR_DEBUG)/main.o: main.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c main.cpp -o $(OBJDIR_DEBUG)/main.o
@@ -68,6 +74,9 @@ $(OBJDIR_DEBUG)/src/Block.o: src/Block.cpp
 
 $(OBJDIR_DEBUG)/src/Blockchain.o: src/Blockchain.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Blockchain.cpp -o $(OBJDIR_DEBUG)/src/Blockchain.o
+
+$(OBJDIR_DEBUG)/src/BlockChainDataStore.o: src/BlockChainDataStore.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/BlockChainDataStore.cpp -o $(OBJDIR_DEBUG)/src/BlockChainDataStore.o
 
 $(OBJDIR_DEBUG)/src/Mutex.o: src/Mutex.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Mutex.cpp -o $(OBJDIR_DEBUG)/src/Mutex.o
@@ -93,17 +102,24 @@ after_release:
 
 release: before_release out_release after_release
 
-out_release: before_release $(OBJ_RELEASE) $(DEP_RELEASE)
+out_release: before_release $(OBJ_RELEASE) $(BCDS_RELEASE) $(DEP_RELEASE)
 	$(LD) $(LIBDIR_RELEASE) -o $(OUT_RELEASE) $(OBJ_RELEASE)  $(LDFLAGS_RELEASE) $(LIB_RELEASE)
+	$(LD) $(LIBDIR_RELEASE) -o bin/Release/bcds $(BCDS_RELEASE)  $(LDFLAGS_RELEASE) $(LIB_RELEASE)
 
 $(OBJDIR_RELEASE)/main.o: main.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c main.cpp -o $(OBJDIR_RELEASE)/main.o
+
+$(OBJDIR_RELEASE)/bcds.o: bcds.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c bcds.cpp -o $(OBJDIR_RELEASE)/bcds.o
 
 $(OBJDIR_RELEASE)/src/Block.o: src/Block.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Block.cpp -o $(OBJDIR_RELEASE)/src/Block.o
 
 $(OBJDIR_RELEASE)/src/Blockchain.o: src/Blockchain.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Blockchain.cpp -o $(OBJDIR_RELEASE)/src/Blockchain.o
+
+$(OBJDIR_RELEASE)/src/BlockChainDataStore.o: src/BlockChainDataStore.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/BlockChainDataStore.cpp -o $(OBJDIR_RELEASE)/src/BlockChainDataStore.o
 
 $(OBJDIR_RELEASE)/src/Mutex.o: src/Mutex.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Mutex.cpp -o $(OBJDIR_RELEASE)/src/Mutex.o

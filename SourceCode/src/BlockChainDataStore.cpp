@@ -84,7 +84,7 @@ std::vector<off_t> BlockChainDataStore::list() {
 	int length;
 	off_t off = SHA256::DIGEST_SIZE;
 	off_t len = lseek(fh, 0, SEEK_END);
-	off_t inc = (2 * SHA256::DIGEST_SIZE) + sizeof(int);
+	off_t inc = SHA256::DIGEST_SIZE + sizeof(int);
 	while (off <= len) {
 		lseek(fh, off, SEEK_SET);
 		if (::read(fh, &length, sizeof(int)) != sizeof(int)) break;
