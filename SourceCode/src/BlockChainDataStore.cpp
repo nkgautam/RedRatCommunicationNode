@@ -66,6 +66,7 @@ struct BlockChainData *BlockChainDataStore::read(off_t offset) {
 	lseek(fh, offset - SHA256::DIGEST_SIZE, SEEK_SET);
 	::read(fh, b->priorhash, SHA256::DIGEST_SIZE + sizeof(int));
 	b = allocate(b->length);
+	memcpy(b->priorhash, tmp.priorhash, SHA256::DIGEST_SIZE);
 	::read(fh, b->data, b->length + SHA256::DIGEST_SIZE);
 	close(fh);
 	return b;

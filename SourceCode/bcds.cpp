@@ -26,10 +26,14 @@ int main() {
 				if (line == "read") {i = 3; continue;}
 				if (line == "verify") {i = 4; continue;}
 				if (line == "list") {
-					i = -1;
 					std::vector<off_t> v = b->list();
+					// go through the vector
+					for (i = 0; i < v.size(); i++)
+						std::cout << v[i] << std::endl;
 					// if vector is empty print empty
-					// else go through the vector
+					if (!i) std::cout << "empty" << std::endl;
+					i = -1;
+					break;
 				}
 				std::cout << "invalid command: " << line << std::endl;
 				i = -1;
@@ -44,7 +48,7 @@ int main() {
 				struct BlockChainData *d = b->read(atol(line.c_str()));
 				if (d) {
 					*d->currenthash = 0;
-					std::cout << (const char *)d->data;
+					std::cout << (const char *)d->data << std::endl;
 					free(d);
 				}
 				else	std::cout << "Read error" << std::endl;
