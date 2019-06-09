@@ -9,6 +9,8 @@ using namespace std;
 #define NUM_THREADS 1
 #define PORTSERVER     9000
 #define PORTCLIENT     9001
+#define PORTCHAT       9002
+
 
 void *CommPort1(void *threadid) {
    long tid;
@@ -64,7 +66,7 @@ int main()
 {
     cout << "RedRat Communication Node APP\n" << endl;
 
-/*
+    /*
     BlockChain  blockChain;
     blockChain.addBlock(Block(1,"01/05/2019", "data1"));
     blockChain.addBlock(Block(2,"02/05/2019", "data2"));
@@ -72,8 +74,9 @@ int main()
     blockChain.showBlockChain();
 
 
-*/
-
+    */
+    //Send reveive simulation on two different ports.
+    /*
     pthread_t threads[NUM_THREADS];
 
     int ret;
@@ -91,6 +94,51 @@ int main()
       }
     }
     pthread_exit(NULL);
+    */
 
+    //Chat simulation
+    //int localChatPort;
+    //cout << "Enter local port:";
+    //cin>>localChatPort;
+
+    string peerIPAddress;
+    cout << "Enter peer IP address:";
+    cin>> peerIPAddress;
+
+    //int peerPort;
+    //cout << "Enter peer chat port:";
+    //cin>> peerPort;
+
+    UDPSocket sock1(PORTCHAT);
+
+    int isChat;
+    cout << "Enter 1 to start chat with the peer:";
+    cin>> isChat;
+
+    if(isChat == 1)
+    {
+        string message;
+        cout << "Me : " ;
+        cin >> message;
+        sock1.SendDataGram(message.c_str(),message.length(),peerIPAddress,PORTCHAT);
+        char str1[256] ={0};
+        unsigned short sport = PORTCHAT;
+        int ret = sock1.RecvDataGram(str1,256 ,peerIPAddress,sport);
+        if(ret > 0)
+        {
+            //cout << "Ret : " << ret << endl;
+            str1[ret] = '\0';
+            cout << "Peer : " << str1 << endl;
+
+        }
+
+
+        //while( message)
+        //{
+
+        //}
+       //cin >>
+
+    }
     return 0;
 }
