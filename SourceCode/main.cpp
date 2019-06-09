@@ -12,7 +12,7 @@ using namespace std;
 #define PORTCLIENT     9001
 #define PORTCHAT       9002
 
-
+/*
 void *CommPort1(void *threadid) {
    long tid;
    tid = (long)threadid;
@@ -60,7 +60,7 @@ void *CommPort2(void *threadid) {
     }
 
 
-}
+} */
 
 void ReceiveMsg(string ip)
 {
@@ -152,8 +152,8 @@ int main()
             std::future<void> recvMsg = std::async (ReceiveMsg,peerIPAddress);
             std::future<void> sendMsg = std::async (SendMsg,peerIPAddress);
 
-            recvMsg.get();
-            sendMsg.get();
+            //recvMsg.get();
+            //sendMsg.get();
         }
 
         cout << "Chat session end... " ;
