@@ -113,24 +113,32 @@ int main()
 
     int isChat;
     cout << "Enter 1 to start chat with the peer:";
+    cout << "Enter exit to end:";
     cin>> isChat;
 
     if(isChat == 1)
     {
-        string message;
-        cout << "Me : " ;
-        cin >> message;
-        sock1.SendDataGram(message.c_str(),message.length(),peerIPAddress,PORTCHAT);
-        char str1[256] ={0};
-        unsigned short sport = PORTCHAT;
-        int ret = sock1.RecvDataGram(str1,256 ,peerIPAddress,sport);
-        if(ret > 0)
-        {
-            //cout << "Ret : " << ret << endl;
-            str1[ret] = '\0';
-            cout << "Peer : " << str1 << endl;
+        string message = " ";
 
+        while(message != "exit" )
+        {
+            char str1[256] ={0};
+            unsigned short sport = PORTCHAT;
+            int ret = sock1.RecvDataGram(str1,256 ,peerIPAddress,sport);
+            if(ret > 0)
+            {
+                //cout << "Ret : " << ret << endl;
+                str1[ret] = '\0';
+                cout << "Peer : " << str1 << endl;
+
+            }
+
+            cout << "Me : " ;
+            cin >> message;
+            sock1.SendDataGram(message.c_str(),message.length(),peerIPAddress,PORTCHAT);
         }
+
+        cout << "Chat session end... " ;
 
 
         //while( message)
