@@ -81,7 +81,7 @@ void SendMsg(string ip)
     string message = " ";
     cout << "Me : " ;
     cin >> message;
-    UDPSocket sock1(PORTCHAT);
+
     sock1.SendDataGram(message.c_str(),message.length(),ip,PORTCHAT);
 
 }
@@ -135,7 +135,7 @@ int main()
     //cin>> peerPort;
 
 
-     UDPSocket sock1(PORTCHAT);
+     //UDPSocket sock1(PORTCHAT);
 
 
     int isChat;
