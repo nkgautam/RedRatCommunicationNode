@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <pthread.h>
+#include <future>
 #include "Blockchain.h"
 #include "Socket.h"
 
@@ -61,6 +62,30 @@ void *CommPort2(void *threadid) {
 
 }
 
+void ReceiveMsg(string ip)
+{
+    char str1[256] ={0};
+    unsigned short sport = PORTCHAT;
+    UDPSocket sock1(PORTCHAT);
+    int ret = sock1.RecvDataGram(str1,256 ,ip,sport);
+    if(ret > 0)
+    {
+        //cout << "Ret : " << ret << endl;
+        str1[ret] = '\0';
+        cout << "Peer : " << str1 << endl;
+    }
+}
+
+void SendMsg(string ip)
+{
+    string message = " ";
+    cout << "Me : " ;
+    cin >> message;
+    UDPSocket sock1(PORTCHAT);
+    sock1.SendDataGram(message.c_str(),message.length(),ip,PORTCHAT);
+
+}
+
 
 int main()
 {
@@ -109,33 +134,26 @@ int main()
     //cout << "Enter peer chat port:";
     //cin>> peerPort;
 
-    UDPSocket sock1(PORTCHAT);
+
+     UDPSocket sock1(PORTCHAT);
+
 
     int isChat;
     cout << "Enter 1 to start chat with the peer:";
-    cout << "Enter exit to end:";
+    //cout << "Enter 0 to end:";
     cin>> isChat;
 
     if(isChat == 1)
     {
-        string message = " ";
 
-        while(message != "exit" )
+
+        while(true)
         {
-            char str1[256] ={0};
-            unsigned short sport = PORTCHAT;
-            int ret = sock1.RecvDataGram(str1,256 ,peerIPAddress,sport);
-            if(ret > 0)
-            {
-                //cout << "Ret : " << ret << endl;
-                str1[ret] = '\0';
-                cout << "Peer : " << str1 << endl;
+            std::future<void> recvMsg = std::async (ReceiveMsg,peerIPAddress);
+            std::future<void> sendMsg = std::async (SendMsg,peerIPAddress);
 
-            }
-
-            cout << "Me : " ;
-            cin >> message;
-            sock1.SendDataGram(message.c_str(),message.length(),peerIPAddress,PORTCHAT);
+            recvMsg.get();
+            sendMsg.get();
         }
 
         cout << "Chat session end... " ;
