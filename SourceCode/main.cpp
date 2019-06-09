@@ -62,11 +62,13 @@ void *CommPort2(void *threadid) {
 
 } */
 
-void ReceiveMsg(string ip)
+UDPSocket sock1(PORTCHAT);
+
+int ReceiveMsg(string ip)
 {
     char str1[256] ={0};
     unsigned short sport = PORTCHAT;
-    UDPSocket sock1(PORTCHAT);
+
     int ret = sock1.RecvDataGram(str1,256 ,ip,sport);
     if(ret > 0)
     {
@@ -74,14 +76,16 @@ void ReceiveMsg(string ip)
         str1[ret] = '\0';
         cout << "Peer : " << str1 << endl;
     }
+
+    return ret;
 }
 
 void SendMsg(string ip)
 {
     string message = " ";
-    cout << "Me : " ;
+
     cin >> message;
-    UDPSocket sock1(PORTCHAT);
+
     sock1.SendDataGram(message.c_str(),message.length(),ip,PORTCHAT);
 
 }
@@ -135,7 +139,7 @@ int main()
     //cin>> peerPort;
 
 
-     //UDPSocket sock1(PORTCHAT);
+     //
 
 
     int isChat;
@@ -149,11 +153,11 @@ int main()
 
         while(true)
         {
-            std::future<void> recvMsg = std::async (ReceiveMsg,peerIPAddress);
+            cout << "Me : " ;
+            std::future<int> recvMsg = std::async (ReceiveMsg,peerIPAddress);
             std::future<void> sendMsg = std::async (SendMsg,peerIPAddress);
 
-            //recvMsg.get();
-            //sendMsg.get();
+
         }
 
         cout << "Chat session end... " ;
