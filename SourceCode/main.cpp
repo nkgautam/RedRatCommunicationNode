@@ -125,21 +125,9 @@ int main()
     pthread_exit(NULL);
     */
 
-    //Chat simulation
-    //int localChatPort;
-    //cout << "Enter local port:";
-    //cin>>localChatPort;
-
     string peerIPAddress;
     cout << "Enter peer IP address:";
     cin>> peerIPAddress;
-
-    //int peerPort;
-    //cout << "Enter peer chat port:";
-    //cin>> peerPort;
-
-
-     //
 
 
     int isChat;
@@ -162,12 +150,6 @@ int main()
 
         cout << "Chat session end... " ;
 
-
-        //while( message)
-        //{
-
-        //}
-       //cin >>
 
     }
     return 0;
