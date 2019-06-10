@@ -2,12 +2,13 @@
 #include <cstdlib>
 #include <pthread.h>
 #include <future>
+
 #include "Blockchain.h"
 #include "Socket.h"
 
 using namespace std;
 
-#define NUM_THREADS 1
+//#define NUM_THREADS 1
 #define PORTSERVER     9000
 #define PORTCLIENT     9001
 #define PORTCHAT       9002
@@ -74,7 +75,7 @@ int ReceiveMsg(string ip)
     {
         //cout << "Ret : " << ret << endl;
         str1[ret] = '\0';
-        cout << "Peer : " << str1 << endl;
+        cout << endl<<"Peer : " << str1 << endl;
     }
 
     return ret;
@@ -83,11 +84,9 @@ int ReceiveMsg(string ip)
 void SendMsg(string ip)
 {
     string message = " ";
-
-    cin >> message;
-
+    cout << "Me : " ;
+    std::getline (std::cin , message);
     sock1.SendDataGram(message.c_str(),message.length(),ip,PORTCHAT);
-
 }
 
 
@@ -129,28 +128,19 @@ int main()
     cout << "Enter peer IP address:";
     cin>> peerIPAddress;
 
-
     int isChat;
     cout << "Enter 1 to start chat with the peer:";
-    //cout << "Enter 0 to end:";
     cin>> isChat;
 
     if(isChat == 1)
     {
-
-
         while(true)
         {
-            cout << "Me : " ;
             std::future<int> recvMsg = std::async (ReceiveMsg,peerIPAddress);
             std::future<void> sendMsg = std::async (SendMsg,peerIPAddress);
-
-
         }
 
         cout << "Chat session end... " ;
-
-
     }
     return 0;
 }
