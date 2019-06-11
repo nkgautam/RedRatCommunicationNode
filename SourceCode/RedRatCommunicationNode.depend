@@ -429,3 +429,13 @@
 	<errno.h>
 	<climits>
 
+1560256808 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Chat.cpp
+	"Chat.h"
+	<iostream>
+	<future>
+
+1560256882 /home/pi/RedRatCommunicationNode/SourceCode/include/Chat.h
+	"Socket.h"
+	<future>
+	<string>
+
