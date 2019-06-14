@@ -42,6 +42,7 @@
 		<Unit filename="include/Chat.h" />
 		<Unit filename="include/Mutex.h" />
 		<Unit filename="include/Socket.h" />
+		<Unit filename="include/SqliteDataBase.h" />
 		<Unit filename="include/sha256.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Block.cpp" />
@@ -49,6 +50,7 @@
 		<Unit filename="src/Chat.cpp" />
 		<Unit filename="src/Mutex.cpp" />
 		<Unit filename="src/Socket.cpp" />
+		<Unit filename="src/SqliteDataBase.cpp" />
 		<Unit filename="src/sha256.cpp" />
 		<Extensions>
 			<code_completion />

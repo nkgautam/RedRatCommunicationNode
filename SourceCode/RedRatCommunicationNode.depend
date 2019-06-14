@@ -24,12 +24,14 @@
 	"Blockchain.h"
 	<iostream>
 
-1559474230 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
+1560517478 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
 	<iostream>
-	<cstdlib>
-	<pthread.h>
+	<future>
+	<stdio.h>
+	<sqlite3.h>
 	"Blockchain.h"
 	"Socket.h"
+	"Chat.h"
 
 1560104287 /home/pi/RedRatCommunicationNode/SourceCode/include/Blockchain.h
 	<vector>
@@ -434,7 +436,7 @@
 	<iostream>
 	<future>
 
-1560256882 /home/pi/RedRatCommunicationNode/SourceCode/include/Chat.h
+1560515237 /home/pi/RedRatCommunicationNode/SourceCode/include/Chat.h
 	"Socket.h"
 	<future>
 	<string>
