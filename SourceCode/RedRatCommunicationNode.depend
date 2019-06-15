@@ -24,14 +24,13 @@
 	"Blockchain.h"
 	<iostream>
 
-1560517478 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
+1560580121 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
 	<iostream>
 	<future>
-	<stdio.h>
-	<sqlite3.h>
 	"Blockchain.h"
 	"Socket.h"
 	"Chat.h"
+	"SqliteDataBase.h"
 
 1560104287 /home/pi/RedRatCommunicationNode/SourceCode/include/Blockchain.h
 	<vector>
@@ -440,4 +439,12 @@
 	"Socket.h"
 	<future>
 	<string>
+
+1560580412 /home/pi/RedRatCommunicationNode/SourceCode/include/SqliteDataBase.h
+	<stdio.h>
+	<sqlite3.h>
+
+1560580772 source:/home/pi/RedRatCommunicationNode/SourceCode/src/SqliteDataBase.cpp
+	"SqliteDataBase.h"
+	"sqlite3.h"
 

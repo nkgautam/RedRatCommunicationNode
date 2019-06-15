@@ -9,7 +9,8 @@ class SqliteDataBase
         SqliteDataBase();
         ~SqliteDataBase();
         bool InsertRecord(char* sql);
-
+        bool SelectRecord(char* sql);
+        bool DeleteRecord(char* sql);
     protected:
 
     private:
@@ -18,6 +19,8 @@ class SqliteDataBase
         int rc;
         char *sql;
         bool CreateTable(char* tblSchema);
+        bool OpenDataBase();
+
 };
 
 #endif // SQLITEDATABASE_H
