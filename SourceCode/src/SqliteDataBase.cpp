@@ -34,7 +34,7 @@ SqliteDataBase::OpenDataBase()
       "JSON            TEXT     ," \
       "TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP );";
       CreateTable(sql);
-      */
+    */
 }
 
 bool
@@ -47,7 +47,7 @@ SqliteDataBase::CreateTable(char* sql)
       sqlite3_free(zErrMsg);
       return false;
    } else {
-      //fprintf(stdout, "Table created successfully\n");
+      fprintf(stdout, "Table created successfully\n");
       return true;
    }
 
@@ -84,11 +84,11 @@ SqliteDataBase::SelectRecord(char* sql)
       sqlite3_free(zErrMsg);
       return false;
    } else {
-      fprintf(stdout, "Operation done successfully\n");
+      fprintf(stdout, "Select operation done successfully\n");
       return true;
    }
    } else {
-      fprintf(stdout, "Operation done successfully\n");
+      fprintf(stdout, "Select operation done successfully\n");
       return true;
    }
 }
@@ -104,7 +104,7 @@ SqliteDataBase::DeleteRecord(char* sql)
       sqlite3_free(zErrMsg);
       return false;
    } else {
-      fprintf(stdout, "Operation done successfully\n");
+      fprintf(stdout, "Delete operation done successfully\n");
       return true;
    }
 }

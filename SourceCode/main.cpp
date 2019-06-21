@@ -6,6 +6,7 @@
 #include "Socket.h"
 #include "Chat.h"
 #include "SqliteDataBase.h"
+#include "NodeList.h"
 
 using namespace std;
 
@@ -24,6 +25,8 @@ int main()
     //Chat chat;
     //chat.Run();
 
+    /*
+
     SqliteDataBase sqlitedb;
 
     char* sql = "INSERT INTO NODEMSG (SENDER,JSON) "  \
@@ -34,8 +37,11 @@ int main()
     char* sql2 = "SELECT * FROM NODEMSG";
     sqlitedb.SelectRecord(sql2);
 
-  //  char* sql3 = "DELETE from NODEMSG where SENDER='sender';";
-  //  sqlitedb.DeleteRecord(sql3);
+    //  char* sql3 = "DELETE from NODEMSG where SENDER='sender';";
+    //  sqlitedb.DeleteRecord(sql3);
 
+    */
+    NodeList nodeList;
+    nodeList.ListenRequest();
     return 0;
 }

@@ -6,9 +6,11 @@ using namespace std;
 
 Chat::Chat()
 {
-    //ctor
+    //
 }
+
 UDPSocket sock1(PORTCHAT);
+
 int ReceiveMsg(string ip)
 {
     char str1[256] ={0};
@@ -25,11 +27,10 @@ int ReceiveMsg(string ip)
     return ret;
 }
 
-
 void SendMsg(string ip)
 {
-    string message = " ";
-    cout << "Me : " ;
+    string message;
+    //cout << "Me : " ;
     std::getline (std::cin , message);
     sock1.SendDataGram(message.c_str(),message.length(),ip,PORTCHAT);
 }
@@ -51,8 +52,6 @@ void Chat::Run()
             std::future<int> recvMsg = std::async (ReceiveMsg,peerIPAddress);
             std::future<void> sendMsg = std::async (SendMsg,peerIPAddress);
         }
-
         cout << "Chat session end... " ;
     }
-
 }
