@@ -23,11 +23,15 @@ int ReceiveMsg1(string sourceAddress)
             cout << "Recv end\n" ;
             str1[ret] = '\0';
             cout << endl<<"Peer : " << str1 << endl;
+            cout << endl<<"Peer Address: " << sourceAddress << endl;
+
+            //cout<<"response sent\n";
             if(str1 == "AddMe"){
 
             }
             if(str1 == "GetNodeList"){
-
+                string message = "NodeList";
+                sock2.SendDataGram(message.c_str(),message.length(),sourceAddress,sport);
             }
         }
         return ret;
@@ -52,7 +56,7 @@ NodeList::ListenRequest()
 
     while(true){
         cout<<"While() starts\n";
-        string peerIPAddress = "*.*.*.*";
+        string peerIPAddress = "0.0.0.0";
         std::future<int> recvMsg = std::async (ReceiveMsg1,peerIPAddress);
         //int ret = recvMsg.get();
         //cout<<"ret = "<<ret<<"\n";
