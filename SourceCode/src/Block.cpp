@@ -1,6 +1,5 @@
 #include "Block.h"
 #include <iostream>
-#include <iostream>
 #include <iomanip>
 #include <sstream>
 #include "sha256.h"

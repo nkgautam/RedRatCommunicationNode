@@ -1,8 +1,14 @@
 #include "NodeList.h"
 #include <future>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
 
 using namespace std;
+using namespace rapidjson;
 
 NodeList::NodeList()
 {
@@ -15,6 +21,7 @@ int ReceiveMsg1(string sourceAddress)
 {
     char str1[256] ={0};
     unsigned short sport = PORTMASTER;
+    //NodeList nodeList;
     try{
         cout << "Recv Start\n " ;
         int ret = sock2.RecvDataGram(str1,256 ,sourceAddress,sport);
@@ -27,11 +34,11 @@ int ReceiveMsg1(string sourceAddress)
 
             //cout<<"response sent\n";
             if(str1 == "AddMe"){
-                nodes.push_back(sourceAddress);
+                //NodeList::nodes.push_back(sourceAddress);
                 cout <<"Node Added: " << sourceAddress << endl;
             }
             if(str1 == "GetNodeList"){
-                string message = NodeListJson();
+                string message = "{\"nodes\":[ \"192.168.29.122\" , \"192.168.29.133\"}";//NodeList::NodeListJson();
                 sock2.SendDataGram(message.c_str(),message.length(),sourceAddress,sport);
                 cout <<"Node list sent to: " << sourceAddress << endl;
             }
@@ -64,7 +71,7 @@ NodeList::SendAddNodeRequest(string masterNodeIP)
 {
     string message = "AddMe";
     unsigned short sport = PORTMASTER;
-    sock1.SendDataGram(message.c_str(),message.length(),masterNodeIP,sport);
+    sock2.SendDataGram(message.c_str(),message.length(),masterNodeIP,sport);
 
 }
 
@@ -73,7 +80,7 @@ NodeList::SendGetNodeListRequest(string masterNodeIP)
 {
     string message = "GetNodeList";
     unsigned short sport = PORTMASTER;
-    sock1.SendDataGram(message.c_str(),message.length(),masterNodeIP,sport);
+    sock2.SendDataGram(message.c_str(),message.length(),masterNodeIP,sport);
 
     char str1[256] ={0};
     int ret = sock2.RecvDataGram(str1,256 ,masterNodeIP,sport);
@@ -91,17 +98,18 @@ NodeList::SendGetNodeListRequest(string masterNodeIP)
 string
 NodeList::NodeListJson(){
 
+
     string jsonNodes = "{\"Nodes\":[";
 
-    for (int i=0; i<nodes.size(); i++)
+    /*for (int i=0; i< this.nodes.size(); i++)
     {
         //cout << nodes[i] << "\n";
         if (i < (nodes.size() - 1))
-            jsonNodes += "\""+nodes[i]+"\" ,"
+            jsonNodes += "\""+nodes[i]+"\" ," ;
         else
-            jsonNodes += "\""+nodes[i]+"\" "
+            jsonNodes += "\""+nodes[i]+"\" " ;
 
-    }
+    }*/
 
     jsonNodes += "] }";
 

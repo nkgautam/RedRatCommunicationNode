@@ -1,7 +1,7 @@
 #ifndef NODELIST_H
 #define NODELIST_H
 
-#include <list>
+#include <vector>
 #include "Socket.h"
 #include <future>
 #include <string>
@@ -14,15 +14,15 @@ class NodeList
         NodeList();
 
     void ListenRequest();
-    void SendAddNodeRequest();
-    void SendGetNodeListRequest();
-
+    void SendAddNodeRequest(string masterNodeIP);
+    void SendGetNodeListRequest(string masterNodeIP);
+    static vector <string> nodes;
+    static string NodeListJson();
     protected:
 
     private:
     //std::list<string> nodes;
-    vector <string> nodes;
-    string NodeListJson();
+
     //bool AddNode(string ipSelfAddress);
     //string GetNodeList(string masterIpAddress);
 };
