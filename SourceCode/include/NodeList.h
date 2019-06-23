@@ -14,11 +14,15 @@ class NodeList
         NodeList();
 
     void ListenRequest();
+    void SendAddNodeRequest();
+    void SendGetNodeListRequest();
 
     protected:
 
     private:
-    std::list<string> nodes;
+    //std::list<string> nodes;
+    vector <string> nodes;
+    string NodeListJson();
     //bool AddNode(string ipSelfAddress);
     //string GetNodeList(string masterIpAddress);
 };
