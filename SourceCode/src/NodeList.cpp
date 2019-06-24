@@ -35,11 +35,12 @@ int ReceiveMsg1(string sourceAddress)
             //cout << endl<<"Peer Address: " << sourceAddress << endl;
 
             //cout<<"response sent\n";
-            if(str1 == "AddMe"){
+            string temp = string(str1);
+            if(temp.compare("AddMe") == 0){
                 NodeList::nodes.push_back(sourceAddress);
                 cout <<"Node Added: " << sourceAddress << endl;
             }
-            if(str1 == "GetNodeList"){
+            if(temp.compare("GetNodeList") == 0){
                 string jsonNodes = "{\"Nodes\":[";
 
             for (int i=0; i< NodeList::nodes.size(); i++)
