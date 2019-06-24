@@ -17,7 +17,7 @@ class NodeList
     void SendAddNodeRequest(string masterNodeIP);
     void SendGetNodeListRequest(string masterNodeIP);
     static vector <string> nodes;
-    static string NodeListJson();
+   // string NodeListJson();
     protected:
 
     private:

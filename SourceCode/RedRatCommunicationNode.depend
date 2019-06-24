@@ -447,12 +447,17 @@
 	"SqliteDataBase.h"
 	"sqlite3.h"
 
-1561015739 source:/home/pi/RedRatCommunicationNode/SourceCode/src/NodeList.cpp
+1561368430 source:/home/pi/RedRatCommunicationNode/SourceCode/src/NodeList.cpp
 	"NodeList.h"
 	<future>
 	<iostream>
+	<iomanip>
+	<sstream>
+	"rapidjson/document.h"
+	"rapidjson/writer.h"
+	"rapidjson/stringbuffer.h"
 
-1561323715 /home/pi/RedRatCommunicationNode/SourceCode/include/NodeList.h
+1561368772 /home/pi/RedRatCommunicationNode/SourceCode/include/NodeList.h
 	<vector>
 	"Socket.h"
 	<future>

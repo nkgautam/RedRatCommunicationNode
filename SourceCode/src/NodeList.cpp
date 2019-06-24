@@ -10,6 +10,8 @@
 using namespace std;
 using namespace rapidjson;
 
+vector<string> NodeList::nodes = {""};
+
 NodeList::NodeList()
 {
 
@@ -34,13 +36,37 @@ int ReceiveMsg1(string sourceAddress)
 
             //cout<<"response sent\n";
             if(str1 == "AddMe"){
-                //NodeList::nodes.push_back(sourceAddress);
+                NodeList::nodes.push_back(sourceAddress);
                 cout <<"Node Added: " << sourceAddress << endl;
             }
             if(str1 == "GetNodeList"){
-                string message = "{\"nodes\":[ \"192.168.29.122\" , \"192.168.29.133\"}";//NodeList::NodeListJson();
-                sock2.SendDataGram(message.c_str(),message.length(),sourceAddress,sport);
-                cout <<"Node list sent to: " << sourceAddress << endl;
+                string jsonNodes = "{\"Nodes\":[";
+
+            for (int i=0; i< NodeList::nodes.size(); i++)
+            {
+                //cout << nodes[i] << "\n";
+                if (i < (NodeList::nodes.size() - 1))
+                    jsonNodes += "\""+NodeList::nodes[i]+"\" ," ;
+                else
+                    jsonNodes += "\""+NodeList::nodes[i]+"\" " ;
+
+            }
+
+            jsonNodes += "] }";
+
+            const char* json =jsonNodes.c_str();
+            Document dom;
+            dom.Parse(json);
+
+            StringBuffer buffer;
+            Writer<StringBuffer> writer(buffer);
+            dom.Accept(writer);
+
+             //std::cout << buffer.GetString() << std::endl;
+            //return buffer.GetString();
+            string retNodeList = buffer.GetString();
+            sock2.SendDataGram(retNodeList.c_str(),retNodeList.length(),sourceAddress,sport);
+            cout <<"Node list sent to: " << sourceAddress << endl;
             }
         }
         return ret;
@@ -69,18 +95,18 @@ NodeList::ListenRequest()
 void
 NodeList::SendAddNodeRequest(string masterNodeIP)
 {
-    string message = "AddMe";
+    string request = "AddMe";
     unsigned short sport = PORTMASTER;
-    sock2.SendDataGram(message.c_str(),message.length(),masterNodeIP,sport);
+    sock2.SendDataGram(request.c_str(),request.length(),masterNodeIP,sport);
 
 }
 
 void
 NodeList::SendGetNodeListRequest(string masterNodeIP)
 {
-    string message = "GetNodeList";
+    string request = "GetNodeList";
     unsigned short sport = PORTMASTER;
-    sock2.SendDataGram(message.c_str(),message.length(),masterNodeIP,sport);
+    sock2.SendDataGram(request.c_str(),request.length(),masterNodeIP,sport);
 
     char str1[256] ={0};
     int ret = sock2.RecvDataGram(str1,256 ,masterNodeIP,sport);
@@ -95,33 +121,3 @@ NodeList::SendGetNodeListRequest(string masterNodeIP)
 }
 
 
-string
-NodeList::NodeListJson(){
-
-
-    string jsonNodes = "{\"Nodes\":[";
-
-    /*for (int i=0; i< this.nodes.size(); i++)
-    {
-        //cout << nodes[i] << "\n";
-        if (i < (nodes.size() - 1))
-            jsonNodes += "\""+nodes[i]+"\" ," ;
-        else
-            jsonNodes += "\""+nodes[i]+"\" " ;
-
-    }*/
-
-    jsonNodes += "] }";
-
-    const char* json =jsonNodes.c_str();
-    Document dom;
-    dom.Parse(json);
-
-    StringBuffer buffer;
-    Writer<StringBuffer> writer(buffer);
-    dom.Accept(writer);
-
-     //std::cout << buffer.GetString() << std::endl;
-    return buffer.GetString();
-
-}
