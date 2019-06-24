@@ -10,38 +10,54 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
     cout << "RedRat Communication Node APP\n" << endl;
+    if (argc < 2) {
 
-    /*
-    BlockChain  blockChain;
-    blockChain.addBlock(Block(1,"01/05/2019", "data1"));
-    blockChain.addBlock(Block(2,"02/05/2019", "data2"));
+      NodeList nodeList;
+      nodeList.ListenRequest();
 
-    blockChain.showBlockChain();
-    */
+    }
+    else
+    {
+        string masterNode = argv[1];
+        NodeList nodeList;
+        nodeList.SendAddNodeRequest(masterNode);
 
-    //Chat chat;
-    //chat.Run();
+        nodeList.SendGetNodeListRequest(masterNode);
+        /*
+        BlockChain  blockChain;
+        blockChain.addBlock(Block(1,"01/05/2019", "data1"));
+        blockChain.addBlock(Block(2,"02/05/2019", "data2"));
 
-    /*
+        blockChain.showBlockChain();
+        */
 
-    SqliteDataBase sqlitedb;
+        //Chat chat;
+        //chat.Run();
 
-    char* sql = "INSERT INTO NODEMSG (SENDER,JSON) "  \
-         "VALUES ('192.168.43.121', '{json:yes}' ); " ;
+        /*
 
-    sqlitedb.InsertRecord(sql);
+        SqliteDataBase sqlitedb;
 
-    char* sql2 = "SELECT * FROM NODEMSG";
-    sqlitedb.SelectRecord(sql2);
+        char* sql = "INSERT INTO NODEMSG (SENDER,JSON) "  \
+             "VALUES ('192.168.43.121', '{json:yes}' ); " ;
 
-    //  char* sql3 = "DELETE from NODEMSG where SENDER='sender';";
-    //  sqlitedb.DeleteRecord(sql3);
+        sqlitedb.InsertRecord(sql);
 
-    */
-    NodeList nodeList;
-    nodeList.ListenRequest();
+        char* sql2 = "SELECT * FROM NODEMSG";
+        sqlitedb.SelectRecord(sql2);
+
+        //  char* sql3 = "DELETE from NODEMSG where SENDER='sender';";
+        //  sqlitedb.DeleteRecord(sql3);
+
+        */
+
+    }
+
+
+
+
     return 0;
 }

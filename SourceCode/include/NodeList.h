@@ -17,14 +17,11 @@ class NodeList
     void SendAddNodeRequest(string masterNodeIP);
     void SendGetNodeListRequest(string masterNodeIP);
     static vector <string> nodes;
-   // string NodeListJson();
+
     protected:
 
     private:
-    //std::list<string> nodes;
 
-    //bool AddNode(string ipSelfAddress);
-    //string GetNodeList(string masterIpAddress);
 };
 
 #endif // NODELIST_H
