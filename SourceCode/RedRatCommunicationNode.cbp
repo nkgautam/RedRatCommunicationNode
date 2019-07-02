@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="157.34.69.83" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
@@ -42,6 +43,7 @@
 		<Unit filename="include/Chat.h" />
 		<Unit filename="include/Mutex.h" />
 		<Unit filename="include/NodeList.h" />
+		<Unit filename="include/SensorDS18B20.h" />
 		<Unit filename="include/Socket.h" />
 		<Unit filename="include/SqliteDataBase.h" />
 		<Unit filename="include/sha256.h" />
@@ -51,6 +53,7 @@
 		<Unit filename="src/Chat.cpp" />
 		<Unit filename="src/Mutex.cpp" />
 		<Unit filename="src/NodeList.cpp" />
+		<Unit filename="src/SensorDS18B20.cpp" />
 		<Unit filename="src/Socket.cpp" />
 		<Unit filename="src/SqliteDataBase.cpp" />
 		<Unit filename="src/sha256.cpp" />

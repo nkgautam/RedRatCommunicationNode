@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
         nodeList.SendGetNodeListRequest(masterNode);
         while(1)
         {
-
+            nodeList.SendTemperature(masterNode);
         }
 
 
