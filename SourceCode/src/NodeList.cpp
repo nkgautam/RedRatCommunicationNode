@@ -137,7 +137,7 @@ NodeList::SendTemperature(string masterNodeIP)
 
     string request = ss.str();
     unsigned short sport = PORTMASTER;
-    cout <<"Temperature : " << request << "Deg C"<< endl;
+    cout <<"Temperature : " << request << " Deg C"<< endl;
     sock2.SendDataGram(request.c_str(),request.length(),masterNodeIP,sport);
 
 }

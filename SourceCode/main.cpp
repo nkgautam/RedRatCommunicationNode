@@ -29,11 +29,12 @@ int main(int argc, char* argv[])
     {
         string masterNode = argv[1];
         NodeList nodeList;
-        nodeList.SendAddNodeRequest(masterNode);
-        nodeList.SendGetNodeListRequest(masterNode);
+        //nodeList.SendAddNodeRequest(masterNode);
+        //nodeList.SendGetNodeListRequest(masterNode);
         while(1)
         {
             nodeList.SendTemperature(masterNode);
+             usleep( 10000 );
         }
 
 
