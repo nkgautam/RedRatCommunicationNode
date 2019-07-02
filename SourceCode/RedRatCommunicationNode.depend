@@ -24,7 +24,7 @@
 	"Blockchain.h"
 	<iostream>
 
-1562047478 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
+1562064941 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
 	<iostream>
 	<future>
 	"Blockchain.h"
@@ -33,14 +33,6 @@
 	"SqliteDataBase.h"
 	"NodeList.h"
 	"SensorDS18B20.h"
-	<stdio.h>
-	<sys/types.h>
-	<sys/stat.h>
-	<fcntl.h>
-	<unistd.h>
-	<errno.h>
-	<stdlib.h>
-	<stdio.h>
 
 1560104287 /home/pi/RedRatCommunicationNode/SourceCode/include/Blockchain.h
 	<vector>
@@ -456,7 +448,7 @@
 	"SqliteDataBase.h"
 	"sqlite3.h"
 
-1562058553 source:/home/pi/RedRatCommunicationNode/SourceCode/src/NodeList.cpp
+1562065089 source:/home/pi/RedRatCommunicationNode/SourceCode/src/NodeList.cpp
 	"NodeList.h"
 	<future>
 	<iostream>

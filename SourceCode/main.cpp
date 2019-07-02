@@ -28,12 +28,14 @@ int main(int argc, char* argv[])
     else
     {
         string masterNode = argv[1];
+        cout << "sending temp to master :" << masterNode<<endl;
+
         NodeList nodeList;
         //nodeList.SendAddNodeRequest(masterNode);
         //nodeList.SendGetNodeListRequest(masterNode);
         while(1)
         {
-            nodeList.SendTemperature(masterNode);
+           nodeList.SendTemperature(masterNode);
              usleep( 10000 );
         }
 

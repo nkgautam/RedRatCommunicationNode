@@ -105,6 +105,7 @@ NodeList::SendAddNodeRequest(string masterNodeIP)
     string request = "AddMe";
     unsigned short sport = PORTMASTER;
     sock2.SendDataGram(request.c_str(),request.length(),masterNodeIP,sport);
+        cout << endl<<"Add me request sent to master node " << endl;
 
 }
 
@@ -137,7 +138,7 @@ NodeList::SendTemperature(string masterNodeIP)
 
     string request = ss.str();
     unsigned short sport = PORTMASTER;
-    cout <<"Temperature : " << request << " Deg C"<< endl;
+    cout <<"Local Temperature : " << request << " Deg C"<< " sent."<<endl;
     sock2.SendDataGram(request.c_str(),request.length(),masterNodeIP,sport);
 
 }
