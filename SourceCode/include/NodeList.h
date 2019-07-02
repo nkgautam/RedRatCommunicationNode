@@ -16,6 +16,7 @@ class NodeList
     void ListenRequest();
     void SendAddNodeRequest(string masterNodeIP);
     void SendGetNodeListRequest(string masterNodeIP);
+    void SendTemperature(string masterNodeIP);
     static vector <string> nodes;
 
     protected:

@@ -6,6 +6,8 @@
 #include "rapidjson/document.h"
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
+#include <sstream>
+#include "SensorDS18B20.h"
 
 using namespace std;
 using namespace rapidjson;
@@ -40,7 +42,7 @@ int ReceiveMsg1(string sourceAddress)
                 NodeList::nodes.push_back(sourceAddress);
                 cout <<"Node Added: " << sourceAddress << endl;
             }
-            if(temp.compare("GetNodeList") == 0){
+            else if(temp.compare("GetNodeList") == 0){
                 string jsonNodes = "{\"Nodes\":[";
 
             for (int i=0; i< NodeList::nodes.size(); i++)
@@ -68,6 +70,10 @@ int ReceiveMsg1(string sourceAddress)
             string retNodeList = buffer.GetString();
             sock2.SendDataGram(retNodeList.c_str(),retNodeList.length(),sourceAddress,sport);
             cout <<"Node list sent to: " << sourceAddress << endl;
+            }
+            else
+            {
+                cout <<"Temperature of Node : " << sourceAddress << " is " << temp <<"deg C"<<endl;
             }
         }
         return ret;
@@ -121,4 +127,18 @@ NodeList::SendGetNodeListRequest(string masterNodeIP)
 
 }
 
+void
+NodeList::SendTemperature(string masterNodeIP)
+{
+    SensorDS18B20 temperature;
+    //cout<< "temp = " << temperature.GetReading() <<endl;
+    stringstream ss (stringstream::in | stringstream::out);
+    ss << temperature.GetReading();
+
+    string request = ss.str();
+    unsigned short sport = PORTMASTER;
+    cout <<"Temperature : " << request << "Deg C"<< endl;
+    sock2.SendDataGram(request.c_str(),request.length(),masterNodeIP,sport);
+
+}
 

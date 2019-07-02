@@ -7,8 +7,12 @@
 #include "Chat.h"
 #include "SqliteDataBase.h"
 #include "NodeList.h"
+#include "SensorDS18B20.h"
+
+
 
 using namespace std;
+
 
 int main(int argc, char* argv[])
 {
@@ -18,14 +22,22 @@ int main(int argc, char* argv[])
       NodeList nodeList;
       nodeList.ListenRequest();
 
+
+
     }
     else
     {
         string masterNode = argv[1];
         NodeList nodeList;
         nodeList.SendAddNodeRequest(masterNode);
-
         nodeList.SendGetNodeListRequest(masterNode);
+        while(1)
+        {
+
+        }
+
+
+
         /*
         BlockChain  blockChain;
         blockChain.addBlock(Block(1,"01/05/2019", "data1"));
