@@ -5,6 +5,7 @@
 #include "Socket.h"
 #include <future>
 #include <string>
+#include <time.h>
 
 #define PORTMASTER       9003
 
@@ -22,7 +23,7 @@ class NodeList
     protected:
 
     private:
-
+        clock_t tClock;
 };
 
 #endif // NODELIST_H

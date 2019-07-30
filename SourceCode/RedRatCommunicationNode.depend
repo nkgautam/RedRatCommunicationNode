@@ -24,7 +24,7 @@
 	"Blockchain.h"
 	<iostream>
 
-1562064941 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
+1564468475 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
 	<iostream>
 	<future>
 	"Blockchain.h"
@@ -38,20 +38,22 @@
 	<vector>
 	"Block.h"
 
-1560104287 /home/pi/RedRatCommunicationNode/SourceCode/include/Block.h
+1564118847 /home/pi/RedRatCommunicationNode/SourceCode/include/Block.h
+	<time.h>
 	<string>
 
-1561323078 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Block.cpp
+1564236901 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Block.cpp
 	"Block.h"
 	<iostream>
 	<iomanip>
 	<sstream>
+	<time.h>
 	"sha256.h"
 	"rapidjson/document.h"
 	"rapidjson/writer.h"
 	"rapidjson/stringbuffer.h"
 
-1560104287 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Blockchain.cpp
+1564112270 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Blockchain.cpp
 	"Blockchain.h"
 	<iostream>
 
@@ -448,8 +450,10 @@
 	"SqliteDataBase.h"
 	"sqlite3.h"
 
-1562065089 source:/home/pi/RedRatCommunicationNode/SourceCode/src/NodeList.cpp
+1564468518 source:/home/pi/RedRatCommunicationNode/SourceCode/src/NodeList.cpp
 	"NodeList.h"
+	"Block.h"
+	<time.h>
 	<future>
 	<iostream>
 	<iomanip>
@@ -460,11 +464,12 @@
 	<sstream>
 	"SensorDS18B20.h"
 
-1562052037 /home/pi/RedRatCommunicationNode/SourceCode/include/NodeList.h
+1564300936 /home/pi/RedRatCommunicationNode/SourceCode/include/NodeList.h
 	<vector>
 	"Socket.h"
 	<future>
 	<string>
+	<time.h>
 
 1561536212 source:/home/martin/RedRatCommunicationNode/SourceCode/main.cpp
 	<iostream>

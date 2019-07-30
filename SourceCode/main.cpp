@@ -16,35 +16,32 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    cout << "RedRat Communication Node APP\n" << endl;
+
     if (argc < 2) {
-
-      NodeList nodeList;
-      nodeList.ListenRequest();
-
-
-
+        cout << "RedRat Communication Master Node APP\n" << endl;
+        NodeList nodeList;
+        nodeList.ListenRequest();
     }
     else
     {
+        cout << "RedRat Communication Node APP\n" << endl;
         string masterNode = argv[1];
-        cout << "sending temp to master :" << masterNode<<endl;
 
         NodeList nodeList;
-        //nodeList.SendAddNodeRequest(masterNode);
-        //nodeList.SendGetNodeListRequest(masterNode);
+        ////nodeList.SendAddNodeRequest(masterNode);
+        nodeList.SendGetNodeListRequest(masterNode);
+        /*
         while(1)
         {
            nodeList.SendTemperature(masterNode);
              usleep( 10000 );
         }
-
-
+        */
 
         /*
         BlockChain  blockChain;
-        blockChain.addBlock(Block(1,"01/05/2019", "data1"));
-        blockChain.addBlock(Block(2,"02/05/2019", "data2"));
+        blockChain.addBlock(Block("data1"));
+        blockChain.addBlock(Block("data2"));
 
         blockChain.showBlockChain();
         */
@@ -70,9 +67,6 @@ int main(int argc, char* argv[])
         */
 
     }
-
-
-
 
     return 0;
 }

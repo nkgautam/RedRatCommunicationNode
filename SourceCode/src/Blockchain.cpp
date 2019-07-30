@@ -16,7 +16,7 @@ BlockChain::~BlockChain()
 
 Block BlockChain::createGenesisBlock()
 {
-    return Block(0,"05/05/2019","Genesis", "0");
+    return Block("Genesis", "0");
 }
 
 Block BlockChain::getLatestBlock()
