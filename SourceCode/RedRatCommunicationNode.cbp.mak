@@ -40,9 +40,9 @@ OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
 OUT_RELEASE = bin/Release/RedRatCommunicationNode
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/src/sha256.o $(OBJDIR_DEBUG)/src/SqliteDataBase.o $(OBJDIR_DEBUG)/src/Socket.o $(OBJDIR_DEBUG)/src/NodeList.o $(OBJDIR_DEBUG)/src/Mutex.o $(OBJDIR_DEBUG)/src/Chat.o $(OBJDIR_DEBUG)/src/Blockchain.o $(OBJDIR_DEBUG)/src/Block.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/src/sha256.o $(OBJDIR_DEBUG)/src/SqliteDataBase.o $(OBJDIR_DEBUG)/src/Socket.o $(OBJDIR_DEBUG)/src/SensorDS18B20.o $(OBJDIR_DEBUG)/src/NodeList.o $(OBJDIR_DEBUG)/src/Mutex.o $(OBJDIR_DEBUG)/src/Chat.o $(OBJDIR_DEBUG)/src/Blockchain.o $(OBJDIR_DEBUG)/src/Block.o
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/src/sha256.o $(OBJDIR_RELEASE)/src/SqliteDataBase.o $(OBJDIR_RELEASE)/src/Socket.o $(OBJDIR_RELEASE)/src/NodeList.o $(OBJDIR_RELEASE)/src/Mutex.o $(OBJDIR_RELEASE)/src/Chat.o $(OBJDIR_RELEASE)/src/Blockchain.o $(OBJDIR_RELEASE)/src/Block.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/src/sha256.o $(OBJDIR_RELEASE)/src/SqliteDataBase.o $(OBJDIR_RELEASE)/src/Socket.o $(OBJDIR_RELEASE)/src/SensorDS18B20.o $(OBJDIR_RELEASE)/src/NodeList.o $(OBJDIR_RELEASE)/src/Mutex.o $(OBJDIR_RELEASE)/src/Chat.o $(OBJDIR_RELEASE)/src/Blockchain.o $(OBJDIR_RELEASE)/src/Block.o
 
 all: debug release
 
@@ -71,6 +71,9 @@ $(OBJDIR_DEBUG)/src/SqliteDataBase.o: src/SqliteDataBase.cpp
 
 $(OBJDIR_DEBUG)/src/Socket.o: src/Socket.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Socket.cpp -o $(OBJDIR_DEBUG)/src/Socket.o
+
+$(OBJDIR_DEBUG)/src/SensorDS18B20.o: src/SensorDS18B20.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/SensorDS18B20.cpp -o $(OBJDIR_DEBUG)/src/SensorDS18B20.o
 
 $(OBJDIR_DEBUG)/src/NodeList.o: src/NodeList.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/NodeList.cpp -o $(OBJDIR_DEBUG)/src/NodeList.o
@@ -116,6 +119,9 @@ $(OBJDIR_RELEASE)/src/SqliteDataBase.o: src/SqliteDataBase.cpp
 
 $(OBJDIR_RELEASE)/src/Socket.o: src/Socket.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Socket.cpp -o $(OBJDIR_RELEASE)/src/Socket.o
+
+$(OBJDIR_RELEASE)/src/SensorDS18B20.o: src/SensorDS18B20.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/SensorDS18B20.cpp -o $(OBJDIR_RELEASE)/src/SensorDS18B20.o
 
 $(OBJDIR_RELEASE)/src/NodeList.o: src/NodeList.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/NodeList.cpp -o $(OBJDIR_RELEASE)/src/NodeList.o
