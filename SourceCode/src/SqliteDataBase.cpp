@@ -35,6 +35,7 @@ SqliteDataBase::OpenDataBase()
       "TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP );";
       CreateTable(sql);
     */
+    //CREATE TABLE IDENTITY(ID INTEGER PRIMARY KEY AUTOINCREMENT,CustID TEXT, Username TEXT,Password TEXT, TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP );
 }
 
 bool
@@ -77,7 +78,8 @@ SqliteDataBase::SelectRecord(char* sql)
 
    if( rc != SQLITE_OK ) {
       fprintf(stderr, "SQL error: %s\n", zErrMsg);
-      sqlite3_free(zErrMsg);rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+      sqlite3_free(zErrMsg);
+      rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 
    if( rc != SQLITE_OK ) {
       fprintf(stderr, "SQL error: %s\n", zErrMsg);
@@ -99,7 +101,7 @@ SqliteDataBase::DeleteRecord(char* sql)
     const char* data = "Callback function called";
     rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 
-   if( rc != SQLITE_OK ) {
+    if( rc != SQLITE_OK ) {
       fprintf(stderr, "SQL error: %s\n", zErrMsg);
       sqlite3_free(zErrMsg);
       return false;

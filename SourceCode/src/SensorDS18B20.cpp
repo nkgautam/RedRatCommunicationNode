@@ -22,52 +22,48 @@ SensorDS18B20::SensorDS18B20()
 float
 SensorDS18B20::GetReading()
 {
-    float temp;
-	int i, j;
-    int fd;
-	int ret;
+    float fTemperature;
+	int iCounter, jCounter;
+    int fileDescriptor;
+	int retValue;
 
-	char buf[BUFSIZE];
+	char charBuffer[BUFSIZE];
 	char tempBuf[5];
-	//while (1){
-	fd = open(addr, O_RDONLY);
 
-	if(-1 == fd){
+	fileDescriptor = open(addr, O_RDONLY);
+
+	if(-1 == fileDescriptor){
 		perror("open device file error");
 		return 1;
 	}
 
 	while(1){
-		ret = read(fd, buf, BUFSIZE);
-		if(0 == ret){
+		retValue = read(fileDescriptor, charBuffer, BUFSIZE);
+		if(0 == retValue){
 			break;
 		}
-		if(-1 == ret){
+		if(-1 == retValue){
 			if(errno == EINTR){
 				continue;
 			}
 			perror("read()");
-			close(fd);
+			close(fileDescriptor);
 			return 1;
 		}
 	}
 
-	for(i=0;i<sizeof(buf);i++){
-		if(buf[i] == 't'){
-			for(j=0;j<sizeof(tempBuf);j++){
-				tempBuf[j] = buf[i+2+j];
+	for(iCounter=0;iCounter<sizeof(charBuffer);iCounter++){
+		if(charBuffer[iCounter] == 't'){
+			for(jCounter=0;jCounter<sizeof(tempBuf);jCounter++){
+				tempBuf[jCounter] = charBuffer[iCounter+2+jCounter];
 			}
 		}
 	}
 
-	temp = (float)atoi(tempBuf) / 1000;
+	fTemperature = (float)atoi(tempBuf) / 1000;
 
-	close(fd);
+	close(fileDescriptor);
 
-	//printf("%.3f C\n",temp);
-	return temp;
-
-
-	//}
+	return fTemperature;
 
 }

@@ -10,7 +10,6 @@
 #include "SensorDS18B20.h"
 
 
-
 using namespace std;
 
 
@@ -25,25 +24,29 @@ int main(int argc, char* argv[])
     else
     {
         cout << "RedRat Communication Node APP\n" << endl;
+
+
         string masterNode = argv[1];
 
         NodeList nodeList;
-        ////nodeList.SendAddNodeRequest(masterNode);
-        nodeList.SendGetNodeListRequest(masterNode);
-        /*
+        //nodeList.SendAddNodeRequest(masterNode);
+        //nodeList.SendGetNodeListRequest(masterNode);
+
+
         while(1)
         {
            nodeList.SendTemperature(masterNode);
              usleep( 10000 );
         }
-        */
 
         /*
+
         BlockChain  blockChain;
         blockChain.addBlock(Block("data1"));
         blockChain.addBlock(Block("data2"));
 
         blockChain.showBlockChain();
+
         */
 
         //Chat chat;

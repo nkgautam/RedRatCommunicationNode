@@ -41,7 +41,6 @@ Block::calculateHash()
     ss << this->m_timestamp << this->m_data;
 
     return sha256(ss.str());
-
 }
 
 string
