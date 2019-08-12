@@ -32,7 +32,9 @@ ClientID::GetID()
 string
 ClientID::GetRandomDigit()
 {
-    int value =  rand() % 10;
+    //srand(time(NULL));
+    //int value =  rand() % 10;
+    int value = Random(1,9);
     //cout<< "value"<<value<<endl;
     char ch[] = "0";
     sprintf(ch, "%d", value);
@@ -48,7 +50,7 @@ ClientID::GetRandomDigit()
 int
 ClientID::Random(int min, int max)
 {
-   bool first = true;
+   static bool first = true;
    if (first)
    {
       srand( time(NULL) );
