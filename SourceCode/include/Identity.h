@@ -8,10 +8,9 @@ class Identity
 {
     public:
         Identity();
-        bool CreateID();
-        string GetID();
-        bool CreateID(string username, string password);
-        string GetID(string username);
+
+        bool CreateLogin(string username, string password);
+        string GetPassword(string username);
 
     protected:
 

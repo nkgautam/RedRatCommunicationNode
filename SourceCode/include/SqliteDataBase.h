@@ -10,6 +10,7 @@ class SqliteDataBase
         ~SqliteDataBase();
         bool InsertRecord(char* sql);
         bool SelectRecord(char* sql);
+
         bool DeleteRecord(char* sql);
     protected:
 

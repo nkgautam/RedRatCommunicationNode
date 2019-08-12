@@ -108,9 +108,6 @@ int ReceiveMsg1(string sourceAddress)
                 std::cout << "Time when remote node sent data   : "<< ctime(&tRecv) << std::endl;
                 std::cout << "Time when local node recevied data: " << ctime(&tNow) << std::endl;
                 std::cout << "Time to recev json                : " << seconds << " seconds\n" <<std::endl;
-
-
-
             }
         }
         return ret;

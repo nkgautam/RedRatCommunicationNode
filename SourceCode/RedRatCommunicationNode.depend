@@ -24,7 +24,7 @@
 	"Blockchain.h"
 	<iostream>
 
-1564910923 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
+1565636463 source:/home/pi/RedRatCommunicationNode/SourceCode/main.cpp
 	<iostream>
 	<future>
 	"Blockchain.h"
@@ -33,6 +33,8 @@
 	"SqliteDataBase.h"
 	"NodeList.h"
 	"SensorDS18B20.h"
+	"Identity.h"
+	"ClientID.h"
 
 1560104287 /home/pi/RedRatCommunicationNode/SourceCode/include/Blockchain.h
 	<vector>
@@ -442,15 +444,15 @@
 	<future>
 	<string>
 
-1560580412 /home/pi/RedRatCommunicationNode/SourceCode/include/SqliteDataBase.h
+1565516590 /home/pi/RedRatCommunicationNode/SourceCode/include/SqliteDataBase.h
 	<stdio.h>
 	<sqlite3.h>
 
-1564860470 source:/home/pi/RedRatCommunicationNode/SourceCode/src/SqliteDataBase.cpp
+1565516591 source:/home/pi/RedRatCommunicationNode/SourceCode/src/SqliteDataBase.cpp
 	"SqliteDataBase.h"
 	"sqlite3.h"
 
-1564468518 source:/home/pi/RedRatCommunicationNode/SourceCode/src/NodeList.cpp
+1565330261 source:/home/pi/RedRatCommunicationNode/SourceCode/src/NodeList.cpp
 	"NodeList.h"
 	"Block.h"
 	<time.h>
@@ -710,13 +712,22 @@
 	<stdlib.h>
 	<stdio.h>
 
-1564910983 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Identity.cpp
+1565632345 source:/home/pi/RedRatCommunicationNode/SourceCode/src/Identity.cpp
 	"Identity.h"
 	"SqliteDataBase.h"
 	<string>
 	<sstream>
 	"sha256.h"
+	<sqlite3.h>
 
-1564910455 /home/pi/RedRatCommunicationNode/SourceCode/include/Identity.h
+1565632335 /home/pi/RedRatCommunicationNode/SourceCode/include/Identity.h
 	<string>
+
+1565639370 /home/pi/RedRatCommunicationNode/SourceCode/include/ClientID.h
+	<string>
+
+1565637170 source:/home/pi/RedRatCommunicationNode/SourceCode/src/ClientID.cpp
+	"ClientID.h"
+	<stdlib.h>
+	<cstdlib>
 

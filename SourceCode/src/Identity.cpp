@@ -3,6 +3,18 @@
 #include <string>
 #include <sstream>
 #include "sha256.h"
+#include <sqlite3.h>
+
+static int callback1(void *data, int argc, char **argv, char **azColName){
+   int i;
+   fprintf(stderr, "%s: ", (const char*)data);
+
+   for(i = 0; i<argc; i++) {
+      printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+   }
+   printf("\n");
+   return 0;
+}
 
 Identity::Identity()
 {
@@ -10,25 +22,25 @@ Identity::Identity()
 }
 
 bool
-Identity::CreateID(string username, string password)
+Identity::CreateLogin(string username, string password)
 {
-    SqliteDataBase sqlitedb;
+    //  SqliteDataBase sqlitedb;
 
-    //get total count and format the CustID
-    sqlitedb.SelectRecord("select max(ID) from NODEMSG;");
-    //encrypt password
+    //  get total count and format the CustID
+    //  sqlitedb.SelectRecord("select max(ID) from NODEMSG;",callback1);
+    //  encrypt password
     std::ostringstream ss;
     ss << username << password;
 
     string passwordHash = sha256(ss.str());
 
-    char* sql = "INSERT INTO IDENTITY (CustID,Username,Password) VALUES ('custID','"+ username.c_str()+"','"+passwordHash.c_str()+"',  ); " ;
+    //    char* sql = "INSERT INTO IDENTITY (CustID,Username,Password) VALUES ('custID','"+ username.c_str()+"','"+passwordHash.c_str()+"',  ); " ;
 
-    sqlitedb.InsertRecord(sql);
+    //    sqlitedb.InsertRecord(sql);
 }
 
 string
-Identity::GetID(string username)
+Identity::GetPassword(string username)
 {
 
 }

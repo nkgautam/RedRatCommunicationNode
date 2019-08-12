@@ -41,7 +41,7 @@ SqliteDataBase::OpenDataBase()
 bool
 SqliteDataBase::CreateTable(char* sql)
 {
-    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+   rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
 
    if( rc != SQLITE_OK ){
       fprintf(stderr, "SQL error: %s\n", zErrMsg);
@@ -94,6 +94,8 @@ SqliteDataBase::SelectRecord(char* sql)
       return true;
    }
 }
+
+
 
 bool
 SqliteDataBase::DeleteRecord(char* sql)

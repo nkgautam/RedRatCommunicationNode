@@ -8,7 +8,8 @@
 #include "SqliteDataBase.h"
 #include "NodeList.h"
 #include "SensorDS18B20.h"
-
+#include "Identity.h"
+#include "ClientID.h"
 
 using namespace std;
 
@@ -25,19 +26,26 @@ int main(int argc, char* argv[])
     {
         cout << "RedRat Communication Node APP\n" << endl;
 
+        ClientID clID;
+        cout<< "Create ClientID:"<<clID.CreateID()<<endl;
+        cout<< "Get ClientID:"<<clID.GetID()<<endl;
 
-        string masterNode = argv[1];
+        //Identity identity;
+        //identity.CreateID("user","password");
 
-        NodeList nodeList;
+
+        //string masterNode = argv[1];
+
+        //NodeList nodeList;
         //nodeList.SendAddNodeRequest(masterNode);
         //nodeList.SendGetNodeListRequest(masterNode);
 
 
-        while(1)
-        {
-           nodeList.SendTemperature(masterNode);
-             usleep( 10000 );
-        }
+        //while(1)
+        //{
+        //   nodeList.SendTemperature(masterNode);
+        //    usleep( 10000 );
+        //}
 
         /*
 
