@@ -22,6 +22,8 @@ Controller::Run(string masterNodeIP)
     cout << " 6. For, Get All node list from the master node"<<endl;
     cout << " (Press 1-6 from above menu) "<<endl;
     cout << " Ctrl +x to exit" <<endl;
+    cout << "                                               "<<endl;
+    cout << " **********************************************"<<endl;
 
     int input;
 
@@ -36,7 +38,6 @@ Controller::Run(string masterNodeIP)
             cout<< "Get ID:"<<clID.GetID()<<endl;
             cout << "                                               "<<endl;
         }
-
         break;
 
         case 2:
@@ -59,10 +60,7 @@ Controller::Run(string masterNodeIP)
         {
             Chat chat;
             chat.Run();
-
-
         }
-
         break;
 
         case 5:
@@ -70,8 +68,6 @@ Controller::Run(string masterNodeIP)
             NodeList nodeList;
             nodeList.SendAddNodeRequest(masterNodeIP);
         }
-
-
         break;
 
         case 6:
@@ -79,7 +75,6 @@ Controller::Run(string masterNodeIP)
             NodeList nodeList;
             nodeList.SendGetNodeListRequest(masterNodeIP);
         }
-
         break;
 
         default:
