@@ -42,6 +42,7 @@
 		<Unit filename="include/Blockchain.h" />
 		<Unit filename="include/Chat.h" />
 		<Unit filename="include/ClientID.h" />
+		<Unit filename="include/Controller.h" />
 		<Unit filename="include/Identity.h" />
 		<Unit filename="include/Mutex.h" />
 		<Unit filename="include/NodeList.h" />
@@ -54,6 +55,7 @@
 		<Unit filename="src/Blockchain.cpp" />
 		<Unit filename="src/Chat.cpp" />
 		<Unit filename="src/ClientID.cpp" />
+		<Unit filename="src/Controller.cpp" />
 		<Unit filename="src/Identity.cpp" />
 		<Unit filename="src/Mutex.cpp" />
 		<Unit filename="src/NodeList.cpp" />

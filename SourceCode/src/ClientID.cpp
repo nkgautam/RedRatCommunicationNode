@@ -17,15 +17,12 @@ ClientID::CreateID()
         GetRandomDigit() +  GetRandomDigit() +  GetRandomDigit() +"-"+
         GetRandomDigit() +  GetRandomDigit() +  GetRandomDigit() ;
 
-
    return id;
-
 }
 
 string
 ClientID::GetID()
 {
-
    return id;
 }
 

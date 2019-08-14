@@ -4,7 +4,7 @@
 SqliteDataBase::SqliteDataBase()
 {
     //ctor
-  OpenDataBase();
+    OpenDataBase();
 
 }
 

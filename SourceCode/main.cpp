@@ -10,6 +10,7 @@
 #include "SensorDS18B20.h"
 #include "Identity.h"
 #include "ClientID.h"
+#include "Controller.h"
 
 using namespace std;
 
@@ -26,9 +27,13 @@ int main(int argc, char* argv[])
     {
         cout << "RedRat Communication Node APP\n" << endl;
 
-        ClientID clID;
-        cout<< "Create ClientID:"<<clID.CreateID()<<endl;
-        cout<< "Get ClientID:"<<clID.GetID()<<endl;
+        Controller ctrl;
+        while(1)
+        {
+            ctrl.Run(argv[1]);
+
+        }
+
 
         //Identity identity;
         //identity.CreateID("user","password");
