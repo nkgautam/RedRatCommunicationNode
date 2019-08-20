@@ -13,7 +13,10 @@ void
 Controller::Run(string masterNodeIP)
 {
     cout << "                                               "<<endl;
-    cout << " ********************MENU**********************"<<endl;
+    cout << " **********************************************"<<endl;
+    cout << "                    MENU                      "<<endl;
+    cout << " **********************************************"<<endl;
+
     cout << " 1. For, Create and show ID"<<endl;
     cout << " 2. For, Send Temperature data to master node" <<endl;
     cout << " 3. For, Send Temperature data to all nodes" <<endl;
