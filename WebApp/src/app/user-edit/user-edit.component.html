@@ -1,0 +1,37 @@
+<div class="card">  
+  <div class="card-body">  
+    <form [formGroup]="angForm" novalidate>  
+      <div class="form-group">  
+        <label class="col-md-4">User Name</label>  
+        <input type="text" class="form-control"   
+          formControlName="UserName"   
+          #UserName   
+          [(ngModel)] = "user.UserName"/>  
+      </div>  
+      <div *ngIf="angForm.controls['UserName'].invalid && (angForm.controls['UserName'].dirty || angForm.controls['UserName'].touched)" class="alert alert-danger">  
+        <div *ngIf="angForm.controls['UserName'].errors.required">  
+          User Name is required.  
+        </div>  
+      </div>  
+      <div class="form-group">  
+        <label class="col-md-4">User Email </label>  
+        <textarea class="form-control" rows = 1 cols = "5"  
+        formControlName="UserEmail"   
+        #UserEmail [(ngModel)] = "user.UserEmail"></textarea>  
+      </div>  
+      <div *ngIf="angForm.controls['UserEmail'].invalid && (angForm.controls['UserEmail'].dirty || angForm.controls['UserEmail'].touched)" class="alert alert-danger">  
+        <div *ngIf="angForm.controls['UserEmail'].errors.required">  
+          User Email is required.  
+        </div>  
+      </div>  
+      
+       
+      <div class="form-group">  
+        <button (click) = "updateUser(UserName.value, UserEmail.value)" type="submit" class="btn btn-primary"  
+        [disabled]="angForm.invalid" >  
+          Update User  
+        </button>  
+      </div>  
+    </form>  
+  </div>  
+</div> 

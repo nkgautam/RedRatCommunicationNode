@@ -3,13 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "WepApp": {
+    "WebApp": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -17,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/WepApp",
+            "outputPath": "dist/WebApp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css",
+	      "./node_modules/bootstrap/dist/css/bootstrap.min.css"  
             ],
             "scripts": []
           },
@@ -67,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "WepApp:build"
+            "browserTarget": "WebApp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "WepApp:build:production"
+              "browserTarget": "WebApp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "WepApp:build"
+            "browserTarget": "WebApp:build"
           }
         },
         "test": {
@@ -92,9 +89,10 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": [  
+   		"src/styles.css",  
+  		 "./node_modules/bootstrap/dist/css/bootstrap.min.css"  
+ 		],  
             "scripts": []
           }
         },
@@ -115,15 +113,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "WepApp:serve"
+            "devServerTarget": "WebApp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "WepApp:serve:production"
+              "devServerTarget": "WebApp:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "WepApp"
+  "defaultProject": "WebApp"
 }
