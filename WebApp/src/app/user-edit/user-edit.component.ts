@@ -17,8 +17,10 @@ export class UserEditComponent implements OnInit {
   
   createForm() {  
     this.angForm = this.fb.group({  
-      UserName: ['', Validators.required ],  
-      UserEmail: ['', Validators.required ]  
+      firstName: ['', Validators.required],  
+     lastName: ['', Validators.required],  
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });  
   }  
 
@@ -30,9 +32,9 @@ export class UserEditComponent implements OnInit {
     });  
   }  
 
-  updateUser(UserName, UserEmail, id) {  
+  updateUser(fistName,lastName, username, id) {  
     this.route.params.subscribe(params => {  
-      this.us.updateUser(UserName, UserEmail, params.id);  
+      this.us.updateUser(fistName, lastName, username, params.id);  
       this.router.navigate(['users']);  
     });  
   }  

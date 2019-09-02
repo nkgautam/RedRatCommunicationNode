@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AlertService, UserService, AuthenticationService } from '@/_services';
+import { AlertService } from '../_services/alerts.service';
+import { UsersService } from '../_services/users.service';
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
@@ -19,7 +21,7 @@ export class RegisterComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private userService: UserService,
+        private userService: UsersService,
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
@@ -52,16 +54,16 @@ export class RegisterComponent implements OnInit {
         }
 
         this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+        this.userService.register(this.registerForm.value);
+        //.pipe(first())
+        // .subscribe(
+        //     data => {
+        //          this.alertService.success('Registration successful', true);
+        //         this.router.navigate(['/login']);
+        //     },
+        //     error => {
+        //         this.alertService.error(error);
+        //         this.loading = false;
+        //     });
     }
 }

@@ -1,47 +1,57 @@
-<div class="card">  
-  <div class="card-body">  
-    <form [formGroup]="angForm" novalidate>  
-      <div class="form-group">  
-        <label class="col-md-4">User Name</label>  
-        <input type="text" class="form-control"   
-          formControlName="UserName"   
-          #UserName />  
-      </div>  
-      <div *ngIf="angForm.controls['UserName'].invalid && (angForm.controls['UserName'].dirty || angForm.controls['UserName'].touched)" class="alert alert-danger">  
-        <div *ngIf="angForm.controls['UserName'].errors.required">  
-          User Name is required.  
-        </div>  
-      </div>  
-      <div class="form-group">  
-        <label class="col-md-4">User Email </label>  
-        <textarea class="form-control" rows = 7 cols = "5"  
-        formControlName="UserEmail"   
-        #UserEmail></textarea>  
-      </div>  
-      <div *ngIf="angForm.controls['UserEmail'].invalid && (angForm.controls['UserEmail'].dirty || angForm.controls['UserEmail'].touched)" class="alert alert-danger">  
-        <div *ngIf="angForm.controls['UserEmail'].errors.required">  
-          User email is required.  
-        </div>  
-      </div>  
-      <div class="form-group">  
-        <label class="col-md-4">User Password</label>  
-        <input type="text" class="form-control"   
-          formControlName="UserPassword"   
-          #UserPassword  
-        />  
-      </div>  
-      <div *ngIf="angForm.controls['UserPassword'].invalid && (angForm.controls['UserPassword'].dirty || angForm.controls['UserPassword'].touched)" class="alert alert-danger">  
-        <div *ngIf="angForm.controls['UserPassword'].errors.required">  
-          User Password is required.  
-        </div>  
-      </div>  
-      <div class="form-group">  
-        <button (click) = "addProduct(UserName.value, UserEmail.value, UserPassword.value)" type="submit" class="btn btn-primary"  
-        [disabled]="angForm.pristine || angForm.invalid" >  
-          Create User  
-        </button>  
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">First Name</label>
+        <input type="text" class="form-control" formControlName="firstName" #firstName />
+      </div>
+      <div
+        *ngIf="angForm.controls['firstName'].invalid && (angForm.controls['firstName'].dirty || angForm.controls['firstName'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="angForm.controls['firstName'].errors.required">
+          First Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Last Name</label>
+        <input type="text" class="form-control" formControlName="lastName" #lastName />
+      </div>
+      <div
+        *ngIf="angForm.controls['lastName'].invalid && (angForm.controls['lastName'].dirty || angForm.controls['lastName'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="angForm.controls['lastName'].errors.required">
+          Last Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Username </label>
+        <textarea class="form-control" rows=7 cols="5" formControlName="username" #username></textarea>
+      </div>
+      <div
+        *ngIf="angForm.controls['username'].invalid && (angForm.controls['username'].dirty || angForm.controls['username'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="angForm.controls['username'].errors.required">
+          Username is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Password</label>
+        <input type="text" class="form-control" formControlName="password" #password />
+      </div>
+      <div
+        *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="angForm.controls['password'].errors.required">
+          Password is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="addProduct(UserName.value, UserEmail.value, UserPassword.value)" type="submit"
+          class="btn btn-primary" [disabled]="angForm.pristine || angForm.invalid">
+          Create User
+        </button>
 
-      </div>  
-    </form>  
-  </div>  
-</div>  
+      </div>
+    </form>
+  </div>
+</div>
