@@ -9,14 +9,20 @@ import { UserGetComponent } from './user-get/user-get.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';  
 import { HttpClientModule } from '@angular/common/http';  
-import { UsersService } from './users.service'; 
+import { UsersService } from './_services/users.service';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserAddComponent,
     UserGetComponent,
-    UserEditComponent
+    UserEditComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import User  from '../User';  
-import { UsersService } from '../users.service'; 
+import User  from '../_models/User';  
+import { UsersService } from '../_services/users.service'; 
 @Component({
   selector: 'app-user-get',
   templateUrl: './user-get.component.html',
